@@ -1,20 +1,23 @@
 from django.db import models
 
 class BaseModel(models.Model):
-    created_at = models.DateTimeField(auto_now_add = True, db_index = True)
+    created_at = models.DateTimeField(auto_now=True, db_index=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         abstract = True
 
+
 class Trainer(BaseModel):
     name = models.CharField(max_length=100, null=True, blank=True)
     birthdate = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=250, null=True, blank=True)
-    email = models.EmailField(max_length=100, null=True, blank=True)
+    email = models.EmailField(max_length=120, null=True, blank=True)
+
 
     def __str__(self):
         return self.name
+
 
 class PokemonCard(BaseModel):
     RARITY_CHOICES = (
@@ -32,7 +35,7 @@ class PokemonCard(BaseModel):
         ('Ice', 'Ice'),
         ('Dragon', 'Dragon'),
         ('Dark', 'Dark'),
-        ('Normal','Normal'),
+        ('Normal', 'Normal'),
         ('Fighting', 'Fighting'),
         ('Flying', 'Flying'),
         ('Poison', 'Poison'),
@@ -55,9 +58,9 @@ class PokemonCard(BaseModel):
     release_date = models.DateField(null=True, blank=True)
     evolution_stage = models.CharField(max_length=250, null=True, blank=True)
     abilities = models.CharField(max_length=250, null=True, blank=True)
+
+
 class Collection(BaseModel):
     card = models.ForeignKey(PokemonCard, blank=True, null=True, on_delete=models.CASCADE)
     trainer = models.ForeignKey(Trainer, blank=True, null=True, on_delete=models.CASCADE)
     collection_date = models.DateField()
-
-
