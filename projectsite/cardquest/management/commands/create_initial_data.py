@@ -1,16 +1,15 @@
 from django.core.management.base import BaseCommand
-from cardquest.models import PokemonCard, Trainer
+from ...models import PokemonCard, Trainer
+
 
 class Command(BaseCommand):
-
-    help = 'Creates initial data for the application'  # <description of the command
+    help = 'Creates initial data for application'
 
     def handle(self, *args, **kwargs):
-
-        self.create_pokemon_cards()  # where logic is implemented
+        self.create_pokemon_cards()
         self.create_trainers()
+
     def create_pokemon_cards(self):
-        # Create Pokemon Card instances
         card1 = PokemonCard(name="Pikachu", rarity="Rare", hp=60, card_type="Electric", attack="Thunder Shock",
                             description="A mouse-like pokemon that can generate electricity.",
                             weakness="Ground", card_number=25, release_date="1996-02-27", evolution_stage="Basic",
@@ -113,9 +112,8 @@ class Command(BaseCommand):
                            email="roxanne@pokemon.com")
         trainer8 = Trainer(name="Aaron", birthdate="2002-10-06", location="Sinoh Region",
                            email="aaronelitefor@pokemon.com")
-        trainer9 = Trainer(name="Ronald", birthdate="2003-06-27", location="Buncag Grounds",
-                           email="ronaldpogi@pokemon.com")
-        trainer10 = Trainer(name="Cedric", birthdate="2004-06-02", location="Bunkhose", email="cedric@pokemon.com")
+        trainer9 = Trainer(name="Fernando", birthdate="2003-11-03", location="San Pedro", email="andFerno@pokemon.com")
+        trainer10 = Trainer(name="Crishel", birthdate="2003-11-21", location="San Jose", email="crishel@pokemon.com")
 
         trainers = [trainer1, trainer2, trainer3, trainer4, trainer5, trainer6, trainer7, trainer8, trainer9, trainer10]
 
