@@ -15,14 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from cardquest import views  # Make sure this import is correct and necessary
 from django.urls import path
-from cardquest.views import HomePageView, TrainerList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', HomePageView.as_view(), name='home'),
-    path('trainer-list/', TrainerList.as_view(), name='trainer-list'),
+    path('', include('cardquest.urls')),
 ]
 
 

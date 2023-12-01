@@ -92,31 +92,13 @@ class Command(BaseCommand):
                              weakness="Dark", card_number=186, release_date="2004-11-18", evolution_stage="Basic",
                              abilities="Pressure")
 
-        card1.save()  # <-- save card1 to PokemonCard table
-        card2.save()
-        card3.save()
-        card4.save()
-        card5.save()
-        card6.save()
-        card7.save()
-        card8.save()
-        card9.save()
-        card10.save()
-        card11.save()
-        card12.save()
-        card13.save()
-        card14.save()
-        card15.save()
-        card16.save()
-        card17.save()
-        card18.save()
-        card19.save()
-        card20.save()
+        cards = [card1, card2, card3, card4, card5, card6, card7, card8, card9, card10,
+                 card11, card12, card13, card14, card15, card16, card17, card18, card19, card20]
 
+        for card in cards:
+            card.save()
 
-
-        self.stdout.write(self.style.SUCCESS(
-            'Successfully created Pokemon cards.'))  # < display success message
+        self.stdout.write(self.style.SUCCESS('Successfully created Pokemon cards.'))
 
     def create_trainers(self):
         trainer1 = Trainer(name="Ash", birthdate="1987-05-22", location="Pallet Town", email="ash@pokemon.com")
@@ -135,15 +117,9 @@ class Command(BaseCommand):
                            email="ronaldpogi@pokemon.com")
         trainer10 = Trainer(name="Cedric", birthdate="2004-06-02", location="Bunkhose", email="cedric@pokemon.com")
 
-        trainer1.save()
-        trainer2.save()
-        trainer3.save()
-        trainer4.save()
-        trainer5.save()
-        trainer6.save()
-        trainer7.save()
-        trainer8.save()
-        trainer9.save()
-        trainer10.save()
-        self.stdout.write(self.style.SUCCESS(
-            'Successfully created trainers.'))  # < display success message
+        trainers = [trainer1, trainer2, trainer3, trainer4, trainer5, trainer6, trainer7, trainer8, trainer9, trainer10]
+
+        for trainer in trainers:
+            trainer.save()
+
+        self.stdout.write(self.style.SUCCESS('Successfully created trainers.'))
