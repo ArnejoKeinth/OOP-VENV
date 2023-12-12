@@ -7,7 +7,7 @@ class TrainerAdmin(admin.ModelAdmin):
     search_fields = ('name', 'location')
 
 @admin.register(PokemonCard)
-class PokemonAdmin(admin.ModelAdmin):
+class PokemonCardAdmin(admin.ModelAdmin):  # Fix the class name here
     list_display = ('name', 'rarity')
     search_fields = ('name',)
 

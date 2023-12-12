@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
-from ...models import PokemonCard, Trainer
-
+from ...models import PokemonCard, Trainer, Collection
+from django.utils import timezone
 
 class Command(BaseCommand):
     help = 'Creates initial data for application'
@@ -8,6 +8,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.create_pokemon_cards()
         self.create_trainers()
+        self.create_collection()
 
     def create_pokemon_cards(self):
         card1 = PokemonCard(name="Pikachu", rarity="Rare", hp=60, card_type="Electric", attack="Thunder Shock",
@@ -62,7 +63,7 @@ class Command(BaseCommand):
                              description="A small, ammphibious, quadrupedal Pokemon.",
                              weakness="Electric", card_number=258, release_date="2001-03-19", evolution_stage="Basic",
                              abilities="Torrent")
-        card14 = PokemonCard(name="Meowth", rarity="Rare", hp=40, card_type="Normmal", attack="Fake out",
+        card14 = PokemonCard(name="Meowth", rarity="Rare", hp=40, card_type="Normal", attack="Fake out",
                              description=" A small, feline Pokemon with creamm0colored fur that turns brown at the tips of its hind paws and tail.",
                              weakness="Fighting", card_number=52, release_date="1996-02-27", evolution_stage="Basic",
                              abilities="Pickup")
@@ -121,3 +122,11 @@ class Command(BaseCommand):
             trainer.save()
 
         self.stdout.write(self.style.SUCCESS('Successfully created trainers.'))
+
+    def create_collection(self):
+        collection = Collection.objects.create(
+            name='Your Collection Name',
+            description='Your collection description.',
+            collection_date=timezone.now()  # Set the current date and time
+        )
+        self.stdout.write(self.style.SUCCESS('Successfully created a collection.'))
