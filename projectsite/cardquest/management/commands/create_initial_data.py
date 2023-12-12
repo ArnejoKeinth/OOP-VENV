@@ -1,6 +1,5 @@
 from django.core.management.base import BaseCommand
 from ...models import PokemonCard, Trainer, Collection
-from django.utils import timezone
 
 class Command(BaseCommand):
     help = 'Creates initial data for application'
@@ -8,7 +7,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.create_pokemon_cards()
         self.create_trainers()
-        self.create_collection()
+        self.create_collections()
 
     def create_pokemon_cards(self):
         card1 = PokemonCard(name="Pikachu", rarity="Rare", hp=60, card_type="Electric", attack="Thunder Shock",
@@ -113,8 +112,9 @@ class Command(BaseCommand):
                            email="roxanne@pokemon.com")
         trainer8 = Trainer(name="Aaron", birthdate="2002-10-06", location="Sinoh Region",
                            email="aaronelitefor@pokemon.com")
-        trainer9 = Trainer(name="Fernando", birthdate="2003-11-03", location="San Pedro", email="andFerno@pokemon.com")
-        trainer10 = Trainer(name="Crishel", birthdate="2003-11-21", location="San Jose", email="crishel@pokemon.com")
+        trainer9 = Trainer(name="Ronald", birthdate="2003-06-27", location="Buncag Grounds",
+                           email="ronaldpogi@pokemon.com")
+        trainer10 = Trainer(name="Cedric", birthdate="2004-06-02", location="Bunkhose", email="cedric@pokemon.com")
 
         trainers = [trainer1, trainer2, trainer3, trainer4, trainer5, trainer6, trainer7, trainer8, trainer9, trainer10]
 
@@ -123,10 +123,14 @@ class Command(BaseCommand):
 
         self.stdout.write(self.style.SUCCESS('Successfully created trainers.'))
 
-    def create_collection(self):
-        collection = Collection.objects.create(
-            name='Your Collection Name',
-            description='Your collection description.',
-            collection_date=timezone.now()  # Set the current date and time
-        )
-        self.stdout.write(self.style.SUCCESS('Successfully created a collection.'))
+    def create_collections(self):
+
+        collection1 = Collection(card=PokemonCard.objects.get(name="Pikachu"), trainer=Trainer.objects.get(name="Ash"),
+                                 collection_date="2022-12-12")
+
+        collections = [collection1]
+
+        for collection in collections:
+            collection.save()
+
+        self.stdout.write(self.style.SUCCESS('Successfully created collections.'))

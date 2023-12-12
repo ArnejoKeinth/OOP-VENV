@@ -63,4 +63,3 @@ class Collection(BaseModel):
     card = models.ForeignKey(PokemonCard, blank=True, null=True, on_delete=models.CASCADE, related_name='collections')
     trainer = models.ForeignKey(Trainer, blank=True, null=True, on_delete=models.CASCADE, related_name='collections')
     collection_date = models.DateTimeField(default=timezone.now)
-
