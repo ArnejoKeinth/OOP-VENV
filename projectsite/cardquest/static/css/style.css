@@ -1,8 +1,10 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     font-family: 'Roboto Slab';
+    /* outline: auto; */
   }
 
   body {
@@ -17,6 +19,7 @@
   }
 
   main {
+    min-height: 69.75vh;
     padding-top: 60px;
     padding-bottom: 60px; /* Adjust as needed */
   }
@@ -39,13 +42,16 @@
     text-align: center;
     padding: 20px 20px;
     text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    transition: 0.1s;
   }
 
   .navbar a:hover {
-    border-radius: 10px;
+    border: 2px solid black;
     background-color: whitesmoke;
     color: black;
-    transition: 0.2s;
+    transition: 0.2s ease-in-out;
   }
 
   .navbar #active {
@@ -56,13 +62,19 @@
 
   /*FOOTER*/
   footer {
-    position: fixed;
+    /* display: none; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
     height: 20vh;
     width: 100%;
     background-color: red;
     color: white;
     bottom: 0;
     text-align: center;
+    padding: 32px 0;
   }
 
   /*-----------------------------HOME_PAGE---------------------------------------*/
@@ -193,7 +205,8 @@
     /* display: flex; */
     text-align: center;
     font-size: 12px;
-    padding-bottom: 160px;
+    /* padding-bottom: 160px; */
+    margin-bottom: 32px;
   }
 
   .card-box {
@@ -225,10 +238,12 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    transition: 0.2s;
   }
 
   .card:hover {
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.9);
+    translate: 0px -8px;
+    box-shadow: 0px 8px 16px 0px grey;
     transition: 0.2s;
   }
 
@@ -263,6 +278,10 @@
   .card #card-number {
     color: grey;
   }
+
+  /* .card .card-stats {
+    width: 60px;
+  } */
 
   .card .card-stats th {
     text-align: right;
@@ -512,20 +531,22 @@
   }
 
   /* Adjusted selectors to accommodate classes with spaces */
-  .page-item.disabled {
+  .page-item.disabled > .page-link {
     /* Styles for disabled pagination item */
+    /* display: none  ; */
     color: #6c757d;
     pointer-events: none;
     cursor: not-allowed;
-    background-color: #fff;
+    background-color: #dee2e6;
     border-color: #dee2e6;
   }
 
-  .page-item.active {
+  .page-item.active > .page-link {
     /* Styles for active pagination item */
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
+    cursor: default;
     z-index: 3;
   }
 
@@ -533,6 +554,7 @@
 
   .social-icons a {
     color: white;
+    font-size: 1.5rem;
     text-decoration: none;
     /* Add other styling properties as needed */
   }
@@ -541,4 +563,5 @@
   .social-icons a:hover {
     color: #ffffff; /* Change color on hover if desired */
     /* Add additional hover effects */
+    text-shadow: 0px 2px black;
   }
