@@ -57,6 +57,9 @@ class PokemonCard(BaseModel):
     evolution_stage = models.CharField(max_length=250, null=True, blank=True)
     abilities = models.CharField(max_length=250, null=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
 class Collection(BaseModel):
     name = models.CharField(max_length=255, default='Your Default Value')
     description = models.TextField(default="Default Collection Description")
